@@ -16,7 +16,8 @@ class Dimensions {
 
   // Font Sizes
   static double font20 = screenHeight * 0.025; // 2.5% of screen height
-  static double font40 = screenHeight * 0.05;  // 5% of screen height
+  static double font40 = screenHeight * 0.04;
+  static double font50 = screenHeight * 0.05; // 5% of screen height
 
   // Icon Sizes
   static double iconSize24 = screenHeight * 0.03; // 3% of screen height
