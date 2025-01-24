@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:sabrina2025/core/constants/app_colors.dart';
 import 'package:sabrina2025/core/constants/supbase_config.dart';
 import 'package:sabrina2025/core/routes/app_routers.dart';
 import 'package:sabrina2025/core/routes/app_routes.dart';
+import 'package:sabrina2025/view_model/auth_view_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
@@ -15,8 +17,10 @@ void main() async {
   );
 
   runApp(
-    
-      MyApp(),
+    ChangeNotifierProvider(
+      create: (_) => AuthViewModel(),
+      child: MyApp(),
+    ),
   );
 }
 
