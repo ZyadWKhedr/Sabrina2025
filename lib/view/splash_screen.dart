@@ -1,10 +1,9 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:sabrina2025/core/constants/app_colors.dart';
+import 'package:sabrina2025/core/constants/dimensions.dart';
 import 'package:sabrina2025/core/routes/app_routes.dart';
-
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -28,18 +27,26 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // Logo Image
           Center(
-            child: Image.asset('assets/sabrina_logo.PNG'),
+            child: Image.asset(
+              'assets/sabrina_logo.PNG',
+              width: Dimensions.width50 * 20, 
+              height: Dimensions.height20 * 10, 
+            ),
           ),
           SizedBox(
-            height: 10,
-          ),
+              height: Dimensions
+                  .height20), 
+
+          // Animated "SABRINA" Text
           AnimatedTextKit(
             animatedTexts: [
               FlickerAnimatedText(
                 'SABRINA',
-                textStyle: const TextStyle(
-                  fontSize: 40.0,
+                textStyle: TextStyle(
+                  fontSize:
+                      Dimensions.font40, 
                   fontWeight: FontWeight.bold,
                   color: AppColors.mainColor,
                 ),
@@ -48,12 +55,14 @@ class _SplashScreenState extends State<SplashScreen> {
             ],
             totalRepeatCount: 1,
           ),
+
+          // Animated "A Slice of Delight" Text
           AnimatedTextKit(
             animatedTexts: [
               FadeAnimatedText(
                 'A slice of Delight',
                 textStyle: TextStyle(
-                  fontSize: 16,
+                  fontSize: Dimensions.font20,
                   color: AppColors.mainColor,
                 ),
                 duration: const Duration(milliseconds: 5000),
