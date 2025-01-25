@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sabrina2025/core/constants/app_colors.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -34,7 +35,9 @@ class CustomTextField extends StatelessWidget {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
             borderSide: const BorderSide(
-                width: 2, color: Color.fromARGB(255, 2, 145, 211)),
+              width: 2,
+              color: AppColors.mainColor,
+            ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),

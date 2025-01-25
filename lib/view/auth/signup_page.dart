@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sabrina2025/core/app/custom_text.dart';
+import 'package:sabrina2025/core/app/custom_text_field.dart';
 import 'package:sabrina2025/core/constants/app_images.dart';
 import 'package:sabrina2025/core/constants/dimensions.dart';
 
 class SignupPage extends StatelessWidget {
-  const SignupPage({super.key});
+  SignupPage({super.key});
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +38,10 @@ class SignupPage extends StatelessWidget {
               ),
             ),
           ),
-          
+          CustomTextField(controller: emailController, label: 'Email'),
+          CustomTextField(controller: passwordController, label: 'Password'),
+          CustomTextField(controller: firstNameController, label: 'First Name'),
+          CustomTextField(controller: lastNameController, label: 'Last Name'),
         ],
       ),
     );
