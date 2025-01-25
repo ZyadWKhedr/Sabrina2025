@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:sabrina2025/core/app/custom_button.dart';
 import 'package:sabrina2025/core/app/custom_text.dart';
 import 'package:sabrina2025/core/app/custom_text_field.dart';
 import 'package:sabrina2025/core/constants/app_images.dart';
@@ -38,10 +39,11 @@ class SignupPage extends StatelessWidget {
               ),
             ),
           ),
-          CustomTextField(controller: emailController, label: 'Email'),
-          CustomTextField(controller: passwordController, label: 'Password'),
           CustomTextField(controller: firstNameController, label: 'First Name'),
           CustomTextField(controller: lastNameController, label: 'Last Name'),
+          CustomTextField(controller: emailController, label: 'Email'),
+          CustomTextField(controller: passwordController, label: 'Password'),
+          CustomButton(label: 'asdasd', onPressed: () {})
         ],
       ),
     );
