@@ -8,6 +8,7 @@ import 'package:sabrina2025/core/app/custom_text_field.dart';
 import 'package:sabrina2025/core/constants/app_images.dart';
 import 'package:sabrina2025/core/constants/dimensions.dart';
 import 'package:sabrina2025/core/routes/app_routes.dart';
+import 'package:sabrina2025/view/auth/widgets/or_divider.dart';
 import 'package:sabrina2025/view_model/auth_view_model.dart';
 
 class SignupPage extends StatelessWidget {
@@ -39,7 +40,7 @@ class SignupPage extends StatelessWidget {
               child: Align(
                 alignment: Alignment.topLeft,
                 child: CustomText(
-                  text: 'SignUp',
+                  text: 'Sign Up',
                   fontSize: Dimensions.font20 * 1.3,
                   fontWeight: FontWeight.bold,
                 ),
@@ -50,6 +51,34 @@ class SignupPage extends StatelessWidget {
             CustomTextField(controller: lastNameController, label: 'Last Name'),
             CustomTextField(controller: emailController, label: 'Email'),
             CustomTextField(controller: passwordController, label: 'Password'),
+            SizedBox(
+              height: Dimensions.height10,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  const Text('Have an account?'),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  GestureDetector(
+                    child: const Text(
+                      'Sign In',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                    onTap: () {
+                      Get.offAllNamed(AppRoutes.login);
+                    },
+                  ),
+                ],
+              ),
+            ),
             SizedBox(
               height: Dimensions.height20,
             ),
@@ -62,8 +91,12 @@ class SignupPage extends StatelessWidget {
                     email: emailController.text.trim(),
                     password: passwordController.text.trim(),
                   );
-                  Get.offNamed(AppRoutes.home);
-                })
+                  Get.offNamed(AppRoutes.login);
+                }),
+            SizedBox(
+              height: Dimensions.height20,
+            ),
+            OrDivider()
           ],
         ),
       ),
