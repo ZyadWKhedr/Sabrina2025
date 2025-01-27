@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   animated_text_kit: ^4.2.2
+  carousel_slider: ^5.0.0
   cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
@@ -38,6 +39,7 @@ dependencies:
   google_nav_bar: ^5.0.7
   provider: ^6.1.2
   shared_preferences: ^2.4.0
+  smooth_page_indicator: ^1.2.0+3
   supabase: ^2.6.2
   supabase_flutter: ^2.8.3
 
