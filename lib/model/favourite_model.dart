@@ -1,19 +1,16 @@
 class Favourite {
-  final int id;
-  final int userId;
-  final int productId;
+  final String productId;
+  final String userId;
 
   Favourite({
-    required this.id,
-    required this.userId,
     required this.productId,
+    required this.userId,
   });
 
   factory Favourite.fromJson(Map<String, dynamic> json) {
     return Favourite(
-      id: json['id'],
-      userId: json['user_id'],
       productId: json['product_id'],
+      userId: json['user_id'],
     );
   }
 }
