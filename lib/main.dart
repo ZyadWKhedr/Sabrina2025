@@ -5,7 +5,9 @@ import 'package:sabrina2025/core/constants/app_colors.dart';
 import 'package:sabrina2025/core/constants/supbase_config.dart';
 import 'package:sabrina2025/core/routes/app_routers.dart';
 import 'package:sabrina2025/core/routes/app_routes.dart';
-import 'package:sabrina2025/view_model/auth_view_model.dart';
+import 'package:sabrina2025/services/auth_service.dart';
+import 'package:sabrina2025/services/supabase_service.dart';
+import 'package:sabrina2025/view_model/product_provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
@@ -17,9 +19,17 @@ void main() async {
   );
 
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => AuthViewModel(),
-      child: MyApp(),
+    MultiProvider(
+      providers: [
+        Provider(create: (_) => SupabaseService(Supabase.instance.client)),
+        Provider(create: (_) => AuthService()),
+        ChangeNotifierProvider(
+          create: (context) => ProductViewModel(
+            context.read<SupabaseService>(),
+          ),
+        ),
+      ],
+      child: const MyApp(),
     ),
   );
 }
