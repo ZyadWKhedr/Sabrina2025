@@ -7,7 +7,7 @@ import 'package:sabrina2025/core/routes/app_routers.dart';
 import 'package:sabrina2025/core/routes/app_routes.dart';
 import 'package:sabrina2025/services/auth_service.dart';
 import 'package:sabrina2025/services/supabase_service.dart';
-import 'package:sabrina2025/view_model/product_provider.dart';
+import 'package:sabrina2025/view_model/product_view_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
@@ -25,7 +25,7 @@ void main() async {
         Provider(create: (_) => AuthService()),
         ChangeNotifierProvider(
           create: (context) => ProductViewModel(
-            context.read<SupabaseService>(),
+            context.read<SupabaseService>(), 
           ),
         ),
       ],
