@@ -25,7 +25,7 @@ void main() async {
         Provider(create: (_) => AuthService()),
         ChangeNotifierProvider(
           create: (context) => ProductViewModel(
-            context.read<SupabaseService>(), 
+            context.read<SupabaseService>(),
           ),
         ),
       ],

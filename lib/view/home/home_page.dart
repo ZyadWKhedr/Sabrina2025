@@ -53,10 +53,10 @@ class _HomeContentState extends State<HomeContent> {
   void initState() {
     super.initState();
 
-    // Fetch all products when the widget is first created
+    // Fetch all categories when the widget is first created
     final productViewModel =
         Provider.of<ProductViewModel>(context, listen: false);
-    productViewModel.fetchAllProducts();
+    productViewModel.fetchAllCategories();
   }
 
   @override
@@ -71,43 +71,48 @@ class _HomeContentState extends State<HomeContent> {
       return Center(child: Text('Error: ${productViewModel.errorMessage}'));
     }
 
-    return Column(
-      children: [
-        CustomText(text: 'Location', fontSize: Dimensions.font20 * 0.7),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(FontAwesomeIcons.locationDot,
-                size: Dimensions.iconSize24 * 0.8, color: AppColors.mainColor),
-            SizedBox(width: Dimensions.width10),
-            CustomText(
-                text: 'Moharem Bek, Alexandria',
-                color: AppColors.iconColor,
-                fontSize: Dimensions.font20 * 0.7),
-          ],
-        ),
-        SizedBox(height: Dimensions.height50),
-        CustomCarousel(),
-        SizedBox(height: Dimensions.height20),
-        productViewModel.products.isNotEmpty
-            ? ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: productViewModel.products.length,
-                itemBuilder: (context, index) {
-                  final product = productViewModel.products[index];
-                  return ListTile(
-                    title: Text(product.name),
-                    subtitle: Text(product.description),
-                    leading: Image.network(
-                        product.imageUrl), // Display product image
-                    trailing: Text(
-                        '\$${product.price.toString()}'), // Display product price
-                  );
-                },
-              )
-            : const Center(child: Text('No products available')),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: Dimensions.height50 * 1.3,
+          ),
+          CustomText(text: 'Location', fontSize: Dimensions.font20 * 0.7),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(FontAwesomeIcons.locationDot,
+                  size: Dimensions.iconSize24 * 0.8,
+                  color: AppColors.mainColor),
+              SizedBox(width: Dimensions.width10),
+              CustomText(
+                  text: 'Moharem Bek, Alexandria',
+                  color: AppColors.iconColor,
+                  fontSize: Dimensions.font20 * 0.7),
+            ],
+          ),
+          SizedBox(height: Dimensions.height50),
+          CustomCarousel(),
+          SizedBox(height: Dimensions.height50 * 2),
+          CustomText(text: 'Categories'),
+          SizedBox(height: Dimensions.height20),
+          productViewModel.categories.isNotEmpty
+              ? ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: productViewModel.categories.length,
+                  itemBuilder: (context, index) {
+                    final categories = productViewModel.categories[index];
+                    return ListTile(
+                      title: Text(categories.name),
+                    );
+                  },
+                )
+              : const Center(child: Text('No categories available')),
+        ],
+      ),
     );
   }
 }

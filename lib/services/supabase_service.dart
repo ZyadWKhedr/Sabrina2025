@@ -1,3 +1,4 @@
+import 'package:sabrina2025/model/categories_model.dart';
 import 'package:sabrina2025/model/product_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -91,5 +92,15 @@ class SupabaseService {
     }
 
     return response.map((json) => Product.fromJson(json)).toList();
+  }
+
+  Future<List<Categories>> fetchAllCategories() async {
+    final response = await _client.from('categories').select();
+
+    if (response == null) {
+      throw Exception('Failed to fetch categories: No response from server');
+    }
+
+    return response.map((json) => Categories.fromJson(json)).toList();
   }
 }
