@@ -10,7 +10,15 @@ class AllCategoriesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('All Categories')),
+      appBar: AppBar(
+        title: const Text('All Categories'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back), // Back icon
+          onPressed: () {
+            Navigator.pop(context); // Navigate back
+          },
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -18,8 +26,7 @@ class AllCategoriesPage extends StatelessWidget {
             categories.isNotEmpty
                 ? GridView.builder(
                     shrinkWrap: true,
-                    physics:
-                        const NeverScrollableScrollPhysics(), // Disable internal scrolling
+                    physics: const NeverScrollableScrollPhysics(),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2, // Set 2 columns for better layout

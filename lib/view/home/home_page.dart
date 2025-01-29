@@ -119,7 +119,7 @@ class _HomeContentState extends State<HomeContent> {
                       fontWeight: FontWeight.bold,
                     ),
                     onTap: () {
-                      Get.off(AllCategoriesPage(
+                      Get.to(AllCategoriesPage(
                           categories: productViewModel.categories));
                     },
                   ),
